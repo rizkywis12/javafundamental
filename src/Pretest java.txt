@@ -1,0 +1,17 @@
+1. bukan
+2.   int angka1;
+        angka1=7;
+
+        System.out.println(angka1);
+3.  public static void main(String[] args) {
+      System.out.println("hello word");
+    }
+
+4.   public static void main(String[] args) {
+        for (int i = 1; i <= 2; i++) {
+            System.out.println(i);
+        }
+    }
+5. index 0
+
+6. skip dlu dah	
