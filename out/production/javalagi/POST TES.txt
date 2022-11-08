@@ -1,0 +1,12 @@
+1. class Buku{
+  int harga = 15000
+  String cekHarga () {
+    return "Harga buku" +harga;
+  }
+};
+
+2.  public static void main(String args[]){
+    Buku = new Buku();
+   String obj = obj.cekHarga();
+    System.out.println(obj);
+  }
