@@ -5,7 +5,7 @@ public class Bio {
     private String lastName;
     private String birthplace;
     private Integer birthyear;
-
+    private Integer date = 2022;
     public Bio(String firstName, String lastName, String birthplace, Integer birthyear) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,8 +52,9 @@ public class Bio {
         return birthyear;
     }
 
+
     public Integer getAge() {
-        return 2022 - this.birthyear;
+        return date - this.birthyear;
     }
 
     public void getBio() {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     Scanner scanner = new Scanner(System.in);
-    String opsi;
+    String menu;
     String firstName, lastName,birthplace;
     Integer birthyear;
     String elementarySchool, juniorHighSchool, seniorHighSchool, university;
@@ -12,12 +12,12 @@ public class Main {
     public void menuApp() {
         System.out.println("===== INFORMASI BIODATA =====");
         System.out.println("1. Input data diri");
-        System.out.println("2. Input data student");
+        System.out.println("2. Input data pendidikan");
         System.out.println("3. Tampilkan data diri");
-        System.out.println("4. Tampilkan data student");
+        System.out.println("4. Tampilkan data pendidikan");
         System.out.println("===== PILIH MENU =====");
         System.out.print("Pilihan user: ");
-        opsi = scanner.nextLine();
+        menu = scanner.nextLine();
     }
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class Main {
         do {
             main.menuApp();
 
-            switch (main.opsi) {
+            switch (main.menu) {
                 case "1":
                     System.out.println("======= Masukan Data Diri Anda ===========");
                     System.out.print("Masukan Nama Depan : ");
@@ -35,7 +35,7 @@ public class Main {
                     main.lastName = main.scanner.nextLine();
                     System.out.print("Masukan Tempat Lahir : ");
                     main.birthplace = main.scanner.nextLine();
-                    System.out.print("Masukan Tanggal Lahir : ");
+                    System.out.print("Masukan Tahun Lahir : ");
                     main.birthyear = Integer.valueOf(main.scanner.nextLine());
                     System.out.println("======== Data disimpan =========");
                     break;
@@ -54,12 +54,13 @@ public class Main {
                     break;
 
                 case "3":
-                    System.out.println("menampilkan data diri");
+                    System.out.println("========== DATA DIRI ANDA ==========");
                     Bio person = new Bio(main.firstName, main.lastName,main.birthplace,main.birthyear);
                     person.getBio();
                     break;
 
                 case "4":
+                    System.out.println("========== DATA PENDIDIKAN ANDA ==========");
                    Education education = new Education(
                            main.elementarySchool, main.juniorHighSchool, main.seniorHighSchool, main.university
                    );
@@ -70,11 +71,11 @@ public class Main {
                     System.out.println("menu tidak tersedia");
                     break;
             }
-            System.out.println("Apakah ingin keluar aplikasi? (y|n)");
-            main.opsi = main.scanner.nextLine();
-        } while (main.opsi.equalsIgnoreCase("n"));
+            System.out.println("Apakah ingin keluar aplikasi? (y/n)");
+            main.menu = main.scanner.nextLine();
+        } while (main.menu.equalsIgnoreCase("n"));
 
-        System.out.println("Log out.. silahkan datang kembali");
+        System.out.println("Keluar Aplikasi");
     }
 }
 
