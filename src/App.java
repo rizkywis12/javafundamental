@@ -44,7 +44,7 @@ public class App {
     public String getProgramlangFav() {
         return programlangFav;
     }
-    public void setProgramlangFav(String programlangFav) {
+    public void setProgramlangFav(String programlangFav)     {
         this.programlangFav = programlangFav;
     }
 
@@ -65,7 +65,7 @@ class bio {
         System.out.print("Masukan nama depan anda : ");
         String firstname = myObj.nextLine();
         app.setFirstname(firstname);
-//
+        //
         System.out.print("Masukan nama belakang anda : ");
         String lastname = myObj.nextLine();
         app.setLastname(lastname);
