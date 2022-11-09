@@ -92,6 +92,7 @@ public class Main {
                     System.out.println("\nKaraketeristik bangun ruang Kubus : \n");
                     kubus.karakteristik();
                     break;
+//
                 case "5":
                     System.out.println("======= input ===========");
                     System.out.print("Masukan Jari Jari : ");
