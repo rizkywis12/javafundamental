@@ -14,6 +14,9 @@ import java.util.Scanner;
 public class Main {
     Scanner scanner = new Scanner(System.in);
     String menu;
+    private String namaDepan;
+    private String namaBelakang;
+    private int cardIdentitas;
     public void menuApp() {
         System.out.println("===== PROGRAM APP =====");
         System.out.println("1. Insert Student");
@@ -47,8 +50,8 @@ public class Main {
                     System.out.println("Masukan Nama Belakang ");
                     person.setNamaBelakang(scanner.next());
                     System.out.println("Masukan Id");
-                    person.setAlamat(scanner.next());
-                    studentRegist = new Person(person.fullname(), person.cardIdentitas());
+                    person.setCardIdentitas(scanner.nextInt());
+                    studentRegist = new Person(person.getNamaDepan(),person.getNamaBelakang(),person.getCardIdentitas());
                     studentRegists.add(studentRegist);
 
                     break;
@@ -67,8 +70,8 @@ public class Main {
                     break;
 
                 case "3":
-                    System.out.println(person);
-                    System.out.println(student);
+                    System.out.println(studentRegists.toString());
+                    System.out.println(learningplans.toString());
                     break;
 
                 default:

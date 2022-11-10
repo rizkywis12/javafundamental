@@ -7,6 +7,7 @@ public class Student implements learningPlanService {
     private String courseName;
     private String room;
     private int sks;
+
     public Student(){
 
     }
@@ -61,12 +62,14 @@ public class Student implements learningPlanService {
         System.out.println("Nama Course :" + getCourseName());
         System.out.println("Ruangan Ke :" + getRoom());
         System.out.println(getSks());
-        if (this.sks > 100) {
-            System.out.println("Gelar : SPD");
-        } else {
-            System.out.println("Gelar : Belum Mmemenuhi Syarat Nilai");
-        }
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "courseName='" + this.courseName + '\'' +
+                ", room='" + this.room + '\'' +
+                ", sks=" + this.sks +
+                '}';
+    }
 }
