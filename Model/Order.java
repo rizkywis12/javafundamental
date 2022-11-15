@@ -1,44 +1,43 @@
 package tugasEnamCobaCoba.Model;
 
-public class Order  {
+public class Order {
 
-    private int index, pesanan, tipe, totalHarga;
+    private int kuantitas, totalHarga;
+    private Menu menu;
 
     // Default constructor
-    public Order(){
+    public Order() {
     }
 
     // Constructor
-    public Order(int index, int pesanan, int tipe){
-        this.index = index;
-        this.pesanan = pesanan;
-        this.tipe = tipe;
-    }
-
-    // Sette
-    public void setIndex(int index) {
-        this.index = index;
-    }
-    public void setPesanan(int pesanan) {
-        this.pesanan = pesanan;
-    }
-    public void setTotalHarga(int totalHarga) {
+    public Order(int kuantitas, int totalHarga) {
+        this.kuantitas = kuantitas;
         this.totalHarga = totalHarga;
+
     }
 
-    // Getter
-    public int getIndex() {
-        return index;
+    public int getKuantitas() {
+        return kuantitas;
     }
-    public int getPesanan() {
-        return pesanan;
+
+    public void setKuantitas(int kuantitas) {
+        this.kuantitas = kuantitas;
     }
-    public int getTipe() {
-        return tipe;
-    }
+
     public int getTotalHarga() {
         return totalHarga;
     }
 
+    public void setTotalHarga(int totalHarga) {
+        this.totalHarga = totalHarga;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 }
 

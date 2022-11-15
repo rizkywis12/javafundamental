@@ -15,6 +15,5 @@ public interface CrudServices<T, K> {
     void update (K id, T data);
     void delete (K id);
     int getMenu(int index);
-
-    int update(K pesanan);
+    void updatePesanan (K id, K data);
 }

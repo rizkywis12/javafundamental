@@ -8,6 +8,7 @@ public class Menu  {
     private  Integer harga;
     private Integer totalPesanan;
 
+
     // Constructor
     public Menu(){
 
@@ -22,8 +23,9 @@ public class Menu  {
         return totalPesanan;
     }
 
-    public void setTotalPesanan(Integer totalPesanan) {
+    public Menu setTotalPesanan(Integer totalPesanan) {
         this.totalPesanan = totalPesanan;
+        return null;
     }
 
     public String getMenu() {
@@ -45,7 +47,7 @@ public class Menu  {
 
     @Override
     public String toString() {
-        return menu + " - Rp. " + harga + "\n";
+        return menu + " - Rp. " + harga  + "\n";
     }
 }
     //

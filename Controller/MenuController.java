@@ -1,17 +1,16 @@
 package tugasEnamCobaCoba.Controller;
 
 import tugasEnamCobaCoba.Model.Menu;
+
 import tugasEnamCobaCoba.Model.Order;
 import tugasEnamCobaCoba.Repository.MenuDao;
 
-import tugasEnamCobaCoba.Repository.OrderDao;
 import tugasEnamCobaCoba.Services.CrudServices;
-import tugasEnamCobaCoba.Services.OrderServices;
+import tugasEnamCobaCoba.Services.OrderService;
 
 
 // Import library
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class MenuController {
@@ -21,15 +20,10 @@ public class MenuController {
     private static CrudServices<Menu, Integer> minumanDao;
     private static CrudServices<Menu, Integer> paketDao;
     private static CrudServices<Menu, Integer> TotalPesanan;
-
-
-    static CrudServices<Menu,Integer> menu = new MenuDao();
-    static OrderServices<Integer> order = new OrderDao();
     static Scanner inputUser = new Scanner(System.in);
     static String opsi = "y";
     static int menuApp;
     static int amount;
-    static boolean state = true;
 
     public static void main(String[] args) {
 
@@ -65,7 +59,6 @@ public class MenuController {
         paketDao.save(paket);
         paket = new Menu("Nasi Goreng Sepcial + Aqua", 51000);
         paketDao.save(paket);
-        OrderDao order = new OrderDao();
 
 
         do {
@@ -101,8 +94,7 @@ public class MenuController {
                     1. Makanan
                     2. Minuman
                     3. Paket
-                    4. Ganti Pesanan
-                    5. Hapus Pesanan"""
+                    4. Hapus Pesanan"""
                         );
                         System.out.print("Pilih Menu : ");
                         int pilihMenu = inputUser.nextInt();
@@ -120,16 +112,14 @@ public class MenuController {
                                 // Mengambil input user
                                 System.out.print("Pilih Makanan : ");
                                 int index = inputUser.nextInt();
-                                menu.setTotalPesanan(index-1);
+                                menu.setTotalPesanan(index - 1);
                                 TotalPesanan.save(makananDao.findById(menu.getTotalPesanan()));
                                 int j = 0;
                                 for (Menu totalpesan : TotalPesanan.findAll()) {
                                     j++;
                                     System.out.println(" Pesanan Anda : ");
-                                    System.out.println( j+ ". " +   totalpesan);
+                                    System.out.println(j + ". " + totalpesan);
                                 }
-                                System.out.print("\nApakah ingin melanjutkan program? (y/n): ");
-                                opsi = inputUser.nextLine();
                             }
 
                             case 2 -> {
@@ -140,12 +130,13 @@ public class MenuController {
                                 }
                                 System.out.print("Pilih Minuman : ");
                                 int index = inputUser.nextInt();
-                                menu.setTotalPesanan(index-1);
+                                menu.setTotalPesanan(index - 1);
                                 int i = 0;
                                 for (Menu totalpesan : TotalPesanan.findAll()) {
                                     i++;
                                     System.out.println(" Pesanan Anda : ");
-                                    System.out.println( i + ". " +   totalpesan);
+                                    System.out.println(i + ". " + totalpesan);
+
                                 }
                                 TotalPesanan.save(minumanDao.findById(menu.getTotalPesanan()));
                                 System.out.print("Pesanan Anda : " + TotalPesanan.findAll() + "\n");
@@ -160,11 +151,44 @@ public class MenuController {
                                 }
                                 System.out.print("Pilih Paket : ");
                                 int index = inputUser.nextInt();
-                                menu.setTotalPesanan(index-1);
+                                menu.setTotalPesanan(index - 1);
                                 TotalPesanan.save(paketDao.findById(menu.getTotalPesanan()));
                                 System.out.print("Pesanan Anda : " + TotalPesanan.findAll() + "\n");
-
                             }
+//                                case 4 -> {
+//                                    System.out.println("\n========== GANTI PESANAN ==========");
+//
+//                                    // Mencetak pesanan
+//                                    int i = 0;
+//                                    for (Menu totalpesan : TotalPesanan.findAll()) {
+//                                        i++;
+//                                        System.out.println(" Pesanan Anda : ");
+//                                        System.out.println( i + ". " +   totalpesan);
+//                                    }
+//                                    // Mengambil input user
+//                                    System.out.print("Pilih pesanan yang akan di update : ");
+//                                    int index = inputUser.nextInt();
+//                                    menu.setTotalPesanan(index-1);
+//
+//                                    // Delete data pesanan
+//
+//                                    int j = 0;
+//                                    for (Menu makananMenu : makananDao.findAll()) {
+//                                        j++;
+//                                        System.out.println(j + ". " + makananMenu);
+//                                    }
+//                                    int ganti = inputUser.nextInt();
+//
+//                                    inputUser.nextLine();
+//
+//                                    System.out.println("Pesanan berhasil di ganti");
+//
+//                                    // Mencetak pesanan setelah terhapus
+//                                    System.out.print("Pesanan Anda : " + TotalPesanan.findAll() + "\n");
+//
+//                                }
+
+
                             case 5 -> {
                                 System.out.println("\n========== Hapus Pesanan ==========");
 
@@ -185,16 +209,16 @@ public class MenuController {
 
                                 // Mencetak pesanan setelah terhapus
                                 System.out.print("Pesanan Anda : " + TotalPesanan.findAll() + "\n");
-
-                                System.out.print("\nApakah ingin melanjutkan program? (y/n): ");
-                                opsi = inputUser.nextLine();
                             }
+
 
                             default -> System.out.println("Menu tidak tersedia!");
                         }
+                        System.out.print("\nApakah ingin melanjutkan program? (y/n): ");
+                        opsi = inputUser.nextLine();
 
                     }
-                    opsi = "y";
+
                 }
 
 
@@ -205,23 +229,37 @@ public class MenuController {
                         j++;
                         System.out.println(" Pesanan Anda : ");
                         System.out.println( j+ ". " +   totalpesan);
+
                         Total += totalpesan.getHarga();
                     }
-
+                    System.out.println("\nPPN\n");
+                    System.out.println(Total * 11/100);
                     System.out.println("\nTOTAL HARGA\n");
-                    System.out.println(Total);
+                    System.out.println(Total+(Total * 11/100));
                     System.out.println("\n==========================================\n");
                     System.out.print("Input your amount: ");
                     amount = inputUser.nextInt();
                     inputUser.nextLine();
 
-                    if (amount < Total) {
+                    if (amount < Total+(Total * 11/100)) {
                         System.out.println("Uang Mu Tidak Cukup");
                     }
                     else {
-                        order.payment(amount);
-//
-//                        TotalPesanan.delete(menu.getTotalPesanan(menu.));
+                        System.out.println("\n========== STRUK ==========");
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("hh.mm.ss aa | dd-MMm-yyyy");
+                        String formattedDate = dateFormat.format(new Date()).toString();
+                        System.out.println("\n========== ITEMS ==========");
+                        int i = 0;
+                        for (Menu totalpesan : TotalPesanan.findAll()) {
+                            i++;
+                            System.out.println("Pesanan Anda : ");
+                            System.out.println( i+ ". " +   totalpesan);
+                        }
+                        System.out.println("\n==== TANGGAL TRANSAKSI =====");
+                        System.out.println(formattedDate);
+                        System.out.println("\nBERHASIL BAYAR " + amount);
+                        System.out.println("\nTengkyu cuy!!!");
+//                        TotalPesanan.delete(menu.getTotalPesanan());
                     }
 
 
